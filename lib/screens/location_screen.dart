@@ -88,7 +88,12 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
-                      print('location_screen: $typedName');
+                      if (typedName != null) {
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                        updateUI(weatherData);
+                        print('location_screen: $typedName');
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
