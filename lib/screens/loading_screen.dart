@@ -33,11 +33,30 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitDoubleBounce(
-          color: Colors.white,
-          size: 100.0,
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: SpinKitDoubleBounce(
+                color: Colors.white,
+                size: 100.0,
+              ),
+            ),
+          ),
+          FlatButton(
+            child: Text('Force loading weather screen'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LocationScreen();
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
