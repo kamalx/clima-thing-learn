@@ -6,6 +6,10 @@ class NetworkHelper {
 
   NetworkHelper(this.url);
 
+  void _dumpStatusCode(int stc) {
+    print('NetworkHelper(): Got status $stc in response.');
+  }
+
   Future getData() async {
     http.Response response = await http.get(url);
 
@@ -13,8 +17,7 @@ class NetworkHelper {
       String data = response.body;
       return jsonDecode(data);
     } else {
-      print('NetworkHelper(): Error fetching data: StatusCode:' +
-          '${response.statusCode}');
+      _dumpStatusCode(response.statusCode);
     }
   }
 }
