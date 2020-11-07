@@ -13,7 +13,7 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  WeatherModel weather = WeatherModel();
+  WeatherModel weatherModel = WeatherModel();
   int temperature;
   String cityName;
   String weatherMessage;
@@ -42,8 +42,8 @@ class _LocationScreenState extends State<LocationScreen> {
       cityName = weatherData['name'];
       var conditionId = weatherData['weather'][0]['id'];
       print(conditionId);
-      weatherMessage = weather.getMessage(temperature);
-      weatherIcon = weather.getWeatherIcon(conditionId);
+      weatherMessage = weatherModel.getMessage(temperature);
+      weatherIcon = weatherModel.getWeatherIcon(conditionId);
     });
   }
 
@@ -70,7 +70,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   FlatButton(
                     onPressed: () async {
-                      var weatherData = await weather.getLocationWeather();
+                      var weatherData = await weatherModel.getLocationWeather();
                       updateUI(weatherData);
                     },
                     child: Icon(
@@ -90,7 +90,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       );
                       if (typedName != null) {
                         var weatherData =
-                            await weather.getCityWeather(typedName);
+                            await weatherModel.getCityWeather(typedName);
                         updateUI(weatherData);
                         print('location_screen: $typedName');
                       }
