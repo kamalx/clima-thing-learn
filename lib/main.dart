@@ -17,7 +17,4 @@ class MyApp extends StatelessWidget {
 * NOTE:
 * https://medium.com/androiddevelopers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd
 * compileSdkVersion for this app was changed to 30
-* There are issues with this app not working only in release builds.
-* The debug builds seem to be working fine.
-*
 * */
